@@ -1,5 +1,0 @@
-{ "injectChanges": false,
-   "files": [ "./app/**/*.{html,htm,css,js,ts}" ],
-   "watchOptions": { "ignored": "node_modules" },
-   "server": { "baseDir": "./" },
-   "port": 8000 }

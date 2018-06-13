@@ -1,102 +1,56 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>muumba</title>
-    <!--script>document.write('<base href="' + document.location + '" />');</script>-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+	<title>muumba</title>
+	<link rel="stylesheet" href="css/fontello.css">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="description" content="Webowy program do prostej obróbki zdjęć z możliwością szybkiej publikacji">
+	<meta name="keywords" content="muumba, edytor photo, edytor zdjęć, webowy edytor, webowy edytor grafiki">
+	<!--<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">-->
+	<style>
+	video {
+	  width: 307px;
+	  height: 250px;
+	}
+	.grayscale {
+	  -webkit-filter: grayscale(1);
+	}
+	.sepia {
+	  -webkit-filter: filter: sepia(50);
+	}
+	.blur {
+	  -webkit-filter: blur(3px);
+	}
 
-    <base href="/">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="style/ng2-material.css">
-    <!--<link rel="stylesheet" href="https://cdn.rawgit.com/justindujardin/ng2-material/410d0dc/dist/font.css" />-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.33.3/es6-shim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.16/system-polyfills.js"></script>
-    <script src="https://code.angularjs.org/tools/system.js"></script>
-    <script src="https://code.angularjs.org/tools/typescript.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-beta.9/angular2-polyfills.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-beta.9/Rx.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-beta.9/angular2.dev.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-beta.8/router.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-beta.9/http.min.js"></script>
-
-
-    <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+	</style>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <!--<script src="jquery.min.js"></script>-->
+    <script src="lib/easeljs-0.7.1.min.js"></script>
     <script src="https://code.createjs.com/tweenjs-0.6.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng2-bootstrap/1.0.7/ng2-bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="css/fontello.css">
-    <script src="app/editor/gui.js"></script>
-    <script src="app/editor/layer.js"></script>
-    <script src="app/editor/user.js"></script>
-    <script src="app/editor/blokLeftF.js"></script>
-    <script src="app/editor/blokLayersF.js"></script>
-    <script src="app/editor/video.js"></script>
-    <script src="app/editor/opcje.js"></script>
-    <script src="app/editor/save.js"></script>
-    <script src="app/editor/new.js"></script>
-    <script src="app/editor/edytor.js"></script>
-    <script src="app/editor/app.js"></script>
-
-    <link href="style/ng2-toastr.min.css" rel="stylesheet" />
-    <script src="js/ng2-toastr.min.js"></script>
-    <!--
-    <base href="file:///android_asset/www/">
-    <link rel="stylesheet" href="style/ng2-material.css">
-    <link rel="stylesheet" href="style/font.css">
-    <script src="js/es6-shim.min.js"></script>
-    <script src="js/system-polyfills.js"></script>
-    <script src="js/system.src.js"></script>
-
-    <script src="js/angular2-polyfills.min.js"></script>
-    <script src="js/angular2.dev.js"></script>
-    <script src="js/Rx.min.js"></script>
-    <script src="js/router.dev.js"></script>
-    <script src="js/http.min.js"></script>
-    -->
+    <script src="jquery.contextMenu.js"></script>
+    <link href="jquery.contextMenu.css" rel="stylesheet" type="text/css" />
+    <script src="gui.js"></script>
+    <script src="layer.js"></script>
+    <script src="user.js"></script>
+    <script src="blokLeftF.js"></script>
+    <script src="blokLayersF.js"></script>
+    <script src="video.js"></script>
+    <script src="opcje.js"></script>
+    <script src="save.js"></script>
+    <script src="new.js"></script>
+    <script src="edytor.js"></script>
+    <script src="app.js"></script>
     <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '342028705986112',
-          xfbml      : true,
-          version    : 'v2.5'
-        });
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
     </script>
-    <script>
-      System.config({
-        map: {
-          "app": "./app",
-          'ng2-translate': 'js/ng2-translate',
-          "ng2-material":  "js/ng2-material",
-          "angular2-jwt":  "js/angular2-jwt.js",
-          "moment": 'node_modules/moment/moment.js'
-        },
-        packages: {
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
-          },
-          "ng2-translate":{ "defaultExtension": "js"},
-          "ng2-material": { "defaultExtension": 'js'}
-        }
-      });
-      System.import('app/main').then(null, console.error.bind(console));
-    </script>
-  </head>
-  <body onresize="resize_canvas()">
-    <my-app>
-      <br/>Loading...
-      <md-progress-circular mode="indeterminate"></md-progress-circular>
-    </my-app>
-  </body>
+</head>
+<body onLoad="init()" id="body" onresize="resize_canvas()" style="background-color: #959595;">
+	<div id="info"> Wczytywanie aplikacji...</div>
+	<canvas class="context-menu-one box menu-1" id="canvas" width="500" height="600" style="background-color: #bbb;display: none;" contextmenu="hiddenmenu">
+        Nie działa...
+    </canvas>
+    <video autoplay width="300px" height="300px" style="position:absolute; left:8px; top:0px;display: none;"></video>
+	<canvas style="display:none;" id="dd"></canvas>
+	<div id="fb-root"></div>
+	<div id='conIcon'></div>
+</body>
 </html>

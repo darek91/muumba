@@ -1,1 +1,0 @@
-{"version":3,"file":"tab-heading.directive.js","sourceRoot":"","sources":["tab-heading.directive.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;YAIA;gBACE,oBAAmB,WAAuB,EAAE,GAAO;oBAAhC,gBAAW,GAAX,WAAW,CAAY;oBACxC,GAAG,CAAC,UAAU,GAAG,WAAW,CAAC;gBAC/B,CAAC;gBAJH;oBAAC,gBAAS,CAAC,EAAC,QAAQ,EAAE,eAAe,EAAC,CAAC;;8BAAA;gBAKvC,iBAAC;YAAD,CAAC,AAJD,IAIC;YAJD,mCAIC,CAAA"}
